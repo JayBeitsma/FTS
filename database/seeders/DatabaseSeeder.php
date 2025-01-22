@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'jay@beitsma.nl',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
+            'points' => 1200,
             'remember_token' => Str::random(10),
         ]);
     }
