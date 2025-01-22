@@ -1,1 +1,3 @@
-<x-layout>Test</x-layout>
+<x-layout>
+    Test
+</x-layout>

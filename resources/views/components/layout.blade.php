@@ -26,7 +26,7 @@
                         <a href="{{ route('festivals') }} ">Festivals</a>
                     </il>
                     <il>
-                        <a href="{{ route('rijsoverzicht') }}">Rijs Overzicht</a>
+                        <a href="{{ route('rijsoverzicht') }}">Rijsoverzicht</a>
                     </il>
                     <il>
                         <a href="{{ route('contact') }}">Contact</a>
@@ -41,6 +41,8 @@
             </nav>
         </div>
     </header>
-    <main> {{ $slot }}</main>
+    <main class=" grid place-items-center text-7xl">
+        {{ $slot }}
+    </main>
 </body>
 </html>
