@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Busride;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\BusrideFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -25,5 +27,7 @@ class DatabaseSeeder extends Seeder
             'points' => 1200,
             'remember_token' => Str::random(10),
         ]);
+
+        Busride::factory(10)->create();
     }
 }

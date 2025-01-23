@@ -8,7 +8,7 @@
         </a>
         @auth
             {{-- User is logged in --}}
-            <x-nav :username="auth()->user()->name "/>
+            <x-nav :username="auth()->user()->name" :points="auth()->user()->points"/>
         @else
             {{-- User is a guest (not logged in) --}}
             <x-guest-nav/>

@@ -15,5 +15,8 @@
         <il>
             <a href="{{ route('dashboard') }}">{{ $username }}</a>
         </il>
+        <il>
+            <a href="{{ route('dashboard') }}"> Punten : {{ $points }}</a>
+        </il>
     </ul>
 </nav>
