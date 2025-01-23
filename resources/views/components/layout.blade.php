@@ -10,7 +10,7 @@
 </head>
 <body class="bg-slate-400">
     <x-header/>
-    <main class=" grid place-items-center text-7xl">
+    <main class=" grid place-items-center">
         {{ $slot }}
     </main>
 </body>

@@ -4,7 +4,7 @@
             <a href="{{ route('index') }}">Home</a>
         </il>
         <il>
-            <a href="{{ route('festivals') }} ">Festivals</a>
+            <a href="{{ route('busrides') }} ">Busritten</a>
         </il>
         <il>
             <a href="{{ route('rijsoverzicht') }}">Rijsoverzicht</a>
