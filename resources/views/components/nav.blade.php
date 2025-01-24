@@ -12,7 +12,7 @@
             <a href="{{ route('busrides') }}" class="hover:border-b-2 hover:border-blue-500">Busritten</a>
         </li>
         <li>
-            <a href="{{ route('rijsoverzicht') }}" class="hover:border-b-2 hover:border-blue-500">Rijsoverzicht</a>
+            <a href="{{ route('about') }}" class="hover:border-b-2 hover:border-blue-500">Over ons</a>
         </li>
         <li>
             <a href="{{ route('contact') }}" class="hover:border-b-2 hover:border-blue-500">Contact</a>

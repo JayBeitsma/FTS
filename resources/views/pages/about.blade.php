@@ -1,3 +1,3 @@
 <x-layout>
-    Rijsoverzicht
+    About
 </x-layout>

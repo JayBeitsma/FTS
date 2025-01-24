@@ -15,16 +15,16 @@ Route::get('/contact', function () {
     return view('pages/contact');
 })->name ('contact');
 
-// Festival page
+// Busrides page
 Route::get('/busrides', [BusridesController::class, 'index'])->name('busrides');
 
 Route::resource('Busride', BusridesController::class)
     ->only(['index', 'show']);
 
-// Rijsoverzicht page
-Route::get('/rijsoverzicht', function () {
-    return view('pages/rijsoverzicht');
-})->name ('rijsoverzicht');
+// About us page
+Route::get('/about', function () {
+    return view('pages/about');
+})->name ('about');
 
 
 

@@ -13,5 +13,6 @@
     <main class="h-screen">
         {{ $slot }}
     </main>
+    <x-footer/>
 </body>
 </html>
