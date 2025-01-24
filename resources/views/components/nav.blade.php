@@ -1,22 +1,21 @@
-<nav>
-    <ul class="flex items-center gap-6 text-2xl">
-        <il>
-            <a href="{{ route('index') }}">Home</a>
-        </il>
-        <il>
-            <a href="{{ route('busrides') }} ">Busritten</a>
-        </il>
-        <il>
-            <a href="{{ route('rijsoverzicht') }}">Rijsoverzicht</a>
-        </il>
-        <il>
-            <a href="{{ route('contact') }}">Contact</a>
-        </il>
-        <il>
-            <a href="{{ route('dashboard') }}">{{ $username }}</a>
-        </il>
-        <il>
-            <a href="{{ route('dashboard') }}"> Punten : {{ $points }}</a>
-        </il>
+<nav class="flex gap-8">
+    {{--    Logo    --}}
+    <a href="{{ route('index') }}" class="flex items-center gap-3 text-xl font-bold truncate">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain">
+    </a>
+    {{--    Nav     --}}
+    <ul class="flex items-center gap-6 text-xl font-bold">
+        <li>
+            <a href="{{ route('index') }}" class="hover:border-b-2 hover:border-blue-500">Home</a>
+        </li>
+        <li>
+            <a href="{{ route('busrides') }}" class="hover:border-b-2 hover:border-blue-500">Busritten</a>
+        </li>
+        <li>
+            <a href="{{ route('rijsoverzicht') }}" class="hover:border-b-2 hover:border-blue-500">Rijsoverzicht</a>
+        </li>
+        <li>
+            <a href="{{ route('contact') }}" class="hover:border-b-2 hover:border-blue-500">Contact</a>
+        </li>
     </ul>
 </nav>
