@@ -8,7 +8,7 @@
                     <h1 class="text-5xl text-white font-bold mb-4">Ontdek de leukste festivals</h1>
                     <p class="text-xl text-white mb-8">Bij Festival Travels geloven we niet alleen in onvergetelijke festivalervaringen, maar ook in het behouden van de natuur waarin ze plaatsvinden. Al jaren bieden wij comfortabele en duurzame busritten aan naar de populairste festivals, met als doel onze ecologische voetafdruk zo klein mogelijk te houden. Samen reizen betekent minder auto's op de weg, minder CO₂-uitstoot en meer zorg voor onze planeet. </p>
                 </div>
-                <a href="{{ route('busrides') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 border border-blue-900 rounded-md w-1/3">Bekijk busritten --></a>
+                <a href="{{ route('busrides.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 border border-blue-900 rounded-md w-1/3">Bekijk busritten --></a>
             </div>
         </div>
         <div class="w-1/5 h-full bg-gray-100 shadow-lg border border-gray-400 flex flex-col items-center">

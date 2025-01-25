@@ -18,7 +18,7 @@
         <div class="w-1/4">
             <h3 class="text-lg font-bold mb-4">Bussen</h3>
             <ul>
-                <li><a href="{{ route('busrides') }}" class="text-gray-400 hover:text-white">Routes</a></li>
+                <li><a href="{{ route('busrides.index') }}" class="text-gray-400 hover:text-white">Routes</a></li>
             </ul>
             <ul>
                 <li><a href="{{ route('index') }}" class="text-gray-400 hover:text-white">Planner</a></li>

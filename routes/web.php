@@ -2,29 +2,32 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BusridesController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 // Main
 Route::get('/', function () {
     return view('pages/index');
-})->name ('index');
+})->name('index');
 
 // Pages
 // Contact page
 Route::get('/contact', function () {
     return view('pages/contact');
-})->name ('contact');
+})->name('contact');
 
 // Busrides page
-Route::get('/busrides', [BusridesController::class, 'index'])->name('busrides');
+Route::get('/busrides', [BusridesController::class, 'index'])->name('busrides.index');
+Route::get('/busrides/{id}', [BusridesController::class, 'show'])->name('busrides.show');
+Route::post('/busrides/{id}/tickets', [BusridesController::class, 'buyTicket'])->name('busrides.tickets.store');
 
-Route::resource('Busride', BusridesController::class)
-    ->only(['index', 'show']);
+// Ticket routes
+Route::resource('tickets', TicketController::class);
 
 // About us page
 Route::get('/about', function () {
     return view('pages/about');
-})->name ('about');
+})->name('about');
 
 
 

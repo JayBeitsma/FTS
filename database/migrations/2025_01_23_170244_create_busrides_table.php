@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('ftimg')->nullable();
             $table->string('festival_name');
             $table->string('description');
-            $table->integer('price');
+            $table->float('price');
             $table->string('starting_point');
             $table->string('end_point');
             $table->dateTime('departure_time');

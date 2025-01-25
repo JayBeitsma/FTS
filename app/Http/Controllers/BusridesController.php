@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Busride;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Ticket;
 
 class BusridesController extends Controller
 {
@@ -36,9 +38,28 @@ class BusridesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $busride = Busride::findOrFail($id);
+        return view('busrides.show', compact('busride'));
+    }
+
+    /**
+     * Allow buying tickets.
+     */
+    public function buyTicket(Request $request, $id)
+    {
+        $busride = Busride::findOrFail($id);
+
+        // Example: Save ticket
+        $ticket = Ticket::create([
+            'user_id' => auth()->id(),
+            'busride_id' => $busride->id,
+            'price' => $busride->price,
+        ]);
+
+        return redirect()->route('busrides.index', $id)
+            ->with('success', 'Ticket purchased successfully!');
     }
 
     /**

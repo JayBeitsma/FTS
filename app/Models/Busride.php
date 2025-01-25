@@ -24,4 +24,9 @@ class Busride extends Model
         'arrival_time',
         'tickets_available',
     ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

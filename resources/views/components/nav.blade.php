@@ -9,7 +9,7 @@
             <a href="{{ route('index') }}" class="hover:border-b-2 hover:border-blue-500">Home</a>
         </li>
         <li>
-            <a href="{{ route('busrides') }}" class="hover:border-b-2 hover:border-blue-500">Busritten</a>
+            <a href="{{ route('busrides.index') }}" class="hover:border-b-2 hover:border-blue-500">Busritten</a>
         </li>
         <li>
             <a href="{{ route('about') }}" class="hover:border-b-2 hover:border-blue-500">Over ons</a>
