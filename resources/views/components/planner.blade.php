@@ -1,4 +1,4 @@
-<section class="bg-blue-500 h-1/4 flex justify-center items-center px-4">
+<section class="bg-blue-500 h-64 flex justify-center items-center px-4">
     <form class="gap-6 w-1/2">
         <div>
             <h1 class="text-5xl">

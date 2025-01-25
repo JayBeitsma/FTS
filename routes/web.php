@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BusridesController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SupportticketsController;
 
 // Main
 Route::get('/', function () {
@@ -15,6 +16,8 @@ Route::get('/', function () {
 Route::get('/contact', function () {
     return view('pages/contact');
 })->name('contact');
+
+Route::resource('supporttickets', SupportticketsController::class);
 
 // Busrides page
 Route::get('/busrides', [BusridesController::class, 'index'])->name('busrides.index');

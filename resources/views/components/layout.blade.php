@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-100">
     <x-header/>
-    <main class="h-screen">
+    <main class="h-full">
         {{ $slot }}
     </main>
     <x-footer/>
