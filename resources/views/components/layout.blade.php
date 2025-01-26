@@ -8,9 +8,9 @@
     <title>{{ config('app.name') }}</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen">
     <x-header/>
-    <main class="h-full">
+    <main class="h-full flex-grow">
         {{ $slot }}
     </main>
     <x-footer/>
