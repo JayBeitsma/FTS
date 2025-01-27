@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BusridesController;
-use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserdashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportticketsController;
 
@@ -37,9 +37,10 @@ Route::get('/about', function () {
 
 
 // Breeze
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [UserdashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('dashboard');
+Route::delete('/dashboard/tickets/{id}', [UserdashboardController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])->name('dashboard.tickets.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

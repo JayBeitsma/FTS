@@ -17,5 +17,10 @@
         <li>
             <a href="{{ route('contact') }}" class="hover:border-b-2 hover:border-blue-500">Contact</a>
         </li>
+        @auth
+            <li>
+                <a href="{{ route('dashboard') }}" class="hover:border-b-2 hover:border-blue-500">Dashboard</a>
+            </li>
+        @endauth
     </ul>
 </nav>
