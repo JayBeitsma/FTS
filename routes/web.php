@@ -5,6 +5,7 @@ use App\Http\Controllers\BusridesController;
 use App\Http\Controllers\UserdashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportticketsController;
+use App\Http\Controllers\AdminController;
 
 
 // Main
@@ -50,6 +51,14 @@ Route::middleware('auth')->group(function () {
 });
 
 // Admin routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('login', [AdminController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AdminController::class, 'login'])->name('login');
+    Route::post('logout', [AdminController::class, 'logout'])->name('logout');
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
+});
+
+// Admin Dashboard
 
 
 require __DIR__.'/auth.php';
