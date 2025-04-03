@@ -6,6 +6,7 @@ use App\Http\Controllers\UserdashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportticketsController;
 
+
 // Main
 Route::get('/', function () {
     return view('pages/index');
@@ -47,5 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Admin routes
+
 
 require __DIR__.'/auth.php';

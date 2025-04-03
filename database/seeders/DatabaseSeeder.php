@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Busride;
+use App\Models\Admin;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BusrideFactory;
 use Illuminate\Database\Seeder;
@@ -28,6 +29,12 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        Admin::factory()->create([
+            'name' => 'Admin1',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('secret'),
+        ]);
+
         $busrides = [
             ['name' => 'Amsterdam to Berlin', 'ftimg' => 'festival1.jpg', 'festival_name' => 'Berlin Festival', 'description' => 'Travel from Amsterdam to Berlin for the Berlin Festival.', 'price' => 50, 'starting_point' => 'Amsterdam', 'end_point' => 'Berlin', 'departure_time' => '2024-06-01 08:00:00', 'arrival_time' => '2024-06-01 16:00:00', 'tickets_available' => 50],
             ['name' => 'Paris to Brussels', 'ftimg' => 'festival2.jpg', 'festival_name' => 'Brussels Summer Festival', 'description' => 'Travel from Paris to Brussels for the Brussels Summer Festival.', 'price' => 30, 'starting_point' => 'Paris', 'end_point' => 'Brussels', 'departure_time' => '2024-07-01 09:00:00', 'arrival_time' => '2024-07-01 12:00:00', 'tickets_available' => 50],
@@ -44,7 +51,6 @@ class DatabaseSeeder extends Seeder
         foreach ($busrides as $busride) {
             Busride::create($busride);
         }
-
 
     }
 }
