@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
+use App\Models\Ticket;
+use App\Models\Busride;
+use App\Models\User;
+
 
 class AdminController extends Controller
 {
@@ -37,7 +41,20 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admindashboard');
+        //get all tickets
+        $tickets = Ticket::all();
+
+        //get all busrides
+        $busrides = Busride::all();
+
+        //get all users
+        $users = User::all();
+
+        //get all admins
+        $admins = Admin::all();
+
+        //pass the data to the view
+        return view('admindashboard', compact('tickets', 'busrides', 'users', 'admins'));
     }
 
     public function create()
@@ -69,4 +86,36 @@ class AdminController extends Controller
     {
         //
     }
+    public function destroyTicket($id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
+
+        return redirect()->back()->with('success', 'Ticket deleted successfully.');
+    }
+
+    public function destroyBusride($id)
+    {
+        $busride = Busride::findOrFail($id);
+        $busride->delete();
+
+        return redirect()->back()->with('success', 'Busride deleted successfully.');
+    }
+
+    public function destroyUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    }
+
+    public function destroyAdmin($id)
+    {
+        $admin = Admin::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->back()->with('success', 'Admin deleted successfully.');
+    }
+
 }
