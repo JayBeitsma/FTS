@@ -121,7 +121,7 @@ class AdminController extends Controller
 
     public function createBusride(Request $request)
     {
-        $busride = new Busride();
+        $busride = Busride::find($request->input('id')) ?? new Busride();
         $busride->name = $request->input('name');
         $busride->ftimg = $request->input('ftimg') ?? 'festival1.jpg';
         $busride->festival_name = $request->input('festival_name');
@@ -138,6 +138,34 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Busride created successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to create busride.');
+        }
+    }
+
+    public function editBusride($id)
+    {
+        $busride = Busride::findOrFail($id);
+        $busrides = Busride::all();
+        return view('components.admin-busrides-view', compact('busride', 'busrides'));
+    }
+
+    public function updateBusride(Request $request, $id)
+    {
+        $busride = Busride::findOrFail($id);
+        $busride->name = $request->input('name');
+        $busride->ftimg = $request->input('ftimg') ?? 'festival1.jpg';
+        $busride->festival_name = $request->input('festival_name');
+        $busride->description = $request->input('description');
+        $busride->price = $request->input('price');
+        $busride->starting_point = $request->input('starting_point');
+        $busride->end_point = $request->input('end_point');
+        $busride->departure_time = $request->input('departure_time');
+        $busride->arrival_time = $request->input('arrival_time');
+        $busride->tickets_available = $request->input('tickets_available');
+
+        if ($busride->save()) {
+            return redirect()->back()->with('success', 'Busride updated successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update busride.');
         }
     }
 }

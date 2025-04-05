@@ -59,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('dashboard/tickets/{id}', [AdminController::class, 'destroyTicket'])->name('dashboard.tickets.destroy')->middleware('auth:admin');
     Route::delete('dashboard/busrides/{id}', [AdminController::class, 'destroyBusride'])->name('dashboard.busrides.destroy')->middleware('auth:admin');
     Route::post('dashboard/busrides', [AdminController::class, 'createBusride'])->name('dashboard.busrides.create')->middleware('auth:admin');
+    Route::get('dashboard/busrides/{id}/edit', [AdminController::class, 'editBusride'])->name('dashboard.busrides.edit')->middleware('auth:admin');
+    Route::patch('dashboard/busrides/{id}', [AdminController::class, 'updateBusride'])->name('dashboard.busrides.update')->middleware('auth:admin');
 });
 
 // Admin Dashboard
