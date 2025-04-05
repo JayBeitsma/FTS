@@ -52,15 +52,21 @@ Route::middleware('auth')->group(function () {
 
 // Admin routes
 Route::prefix('admin')->name('admin.')->group(function () {
+    // Admin login routes
     Route::get('login', [AdminController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AdminController::class, 'login'])->name('login');
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');
+    // Admin dashboard routes
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
+    // Admin ticket routes
     Route::delete('dashboard/tickets/{id}', [AdminController::class, 'destroyTicket'])->name('dashboard.tickets.destroy')->middleware('auth:admin');
+    // Admin busride routes
     Route::delete('dashboard/busrides/{id}', [AdminController::class, 'destroyBusride'])->name('dashboard.busrides.destroy')->middleware('auth:admin');
     Route::post('dashboard/busrides', [AdminController::class, 'createBusride'])->name('dashboard.busrides.create')->middleware('auth:admin');
     Route::get('dashboard/busrides/{id}/edit', [AdminController::class, 'editBusride'])->name('dashboard.busrides.edit')->middleware('auth:admin');
     Route::patch('dashboard/busrides/{id}', [AdminController::class, 'updateBusride'])->name('dashboard.busrides.update')->middleware('auth:admin');
+    // Admin user routes
+    Route::delete('dashboard/users/{id}', [AdminController::class, 'destroyUser'])->name('dashboard.user.destroy')->middleware('auth:admin');
 });
 
 // Admin Dashboard
