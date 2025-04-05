@@ -4,7 +4,10 @@
 
     <form method="POST" action="{{ route('admin.login') }}">
         @csrf
-
+        <div class="flex flex-col p-4 items-center justify-center" style="color: #991b1b !important;">
+            <h1 class="text-2xl">ADMIN LOGIN</h1>
+            <p>If you are not an admin please close this tab immediatly!</p>
+        </div>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />

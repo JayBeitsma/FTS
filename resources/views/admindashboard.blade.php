@@ -15,9 +15,11 @@
                 </section>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    test
-                </div>
+                <h2 class="text-2xl font-bold mb-4 p-4  text-white">Busritten</h2>
+                <button onclick="toggleSection('Busrides-section')" class="text-blue-500 ml-4 mb-4">Show</button>
+                <section id="Busrides-section" class="p-6 pt-1 text-gray-900 dark:text-gray-100">
+                    <x-admin-busrides-view :busrides="$busrides" />
+                </section>
             </div>
         </div>
     </div>
@@ -28,6 +30,17 @@
             const section = document.getElementById(sectionId);
             section.classList.toggle('hidden');
         }
+
+        //Toggle all sections on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = ['bookings-section', 'Busrides-section'];
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.classList.add('hidden');
+                }
+            });
+        });
     </script>
 
 </x-app-layout>

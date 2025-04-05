@@ -45,7 +45,8 @@ class AdminController extends Controller
         $tickets = Ticket::all();
 
         //get all busrides
-        $busrides = Busride::all();
+//        $busrides = Busride::all();
+        $busrides = Busride::withCount('tickets')->get();
 
         //get all users
         $users = User::all();
@@ -118,4 +119,25 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Admin deleted successfully.');
     }
 
+    public function createBusride(Request $request)
+    {
+        $busride = new Busride();
+        $busride->name = $request->input('name');
+        $busride->ftimg = $request->input('ftimg') ?? 'festival1.jpg';
+        $busride->festival_name = $request->input('festival_name');
+        $busride->description = $request->input('description');
+        $busride->price = $request->input('price');
+        $busride->starting_point = $request->input('starting_point');
+        $busride->end_point = $request->input('end_point');
+        $busride->departure_time = $request->input('departure_time');
+        $busride->arrival_time = $request->input('arrival_time');
+        $busride->tickets_available = $request->input('tickets_available');
+
+        // Save the busride
+        if ($busride->save()) {
+            return redirect()->back()->with('success', 'Busride created successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to create busride.');
+        }
+    }
 }

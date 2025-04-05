@@ -57,6 +57,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('logout', [AdminController::class, 'logout'])->name('logout');
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
     Route::delete('dashboard/tickets/{id}', [AdminController::class, 'destroyTicket'])->name('dashboard.tickets.destroy')->middleware('auth:admin');
+    Route::delete('dashboard/busrides/{id}', [AdminController::class, 'destroyBusride'])->name('dashboard.busrides.destroy')->middleware('auth:admin');
+    Route::post('dashboard/busrides', [AdminController::class, 'createBusride'])->name('dashboard.busrides.create')->middleware('auth:admin');
 });
 
 // Admin Dashboard
