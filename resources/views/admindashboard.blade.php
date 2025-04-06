@@ -28,6 +28,13 @@
                     <x-admin-users-view :users="$users" />
                 </section>
             </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <h2 class="text-2xl font-bold mb-4 p-4  text-white">Ingeplande Bussen</h2>
+                <button onclick="toggleSection('ar-section')" class="text-blue-500 ml-4 mb-4">Show</button>
+                <section id="ar-section" class="p-6 pt-1 text-gray-900 dark:text-gray-100">
+                    <x-admin-activeroutes-view :activeRoutes="$activeRoutes" />
+                </section>
+            </div>
         </div>
     </div>
 
@@ -40,7 +47,7 @@
 
         //Toggle all sections on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = ['bookings-section', 'busrides-section', 'users-section'];
+            const sections = ['bookings-section', 'busrides-section', 'users-section', 'ar-section'];
             sections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 if (section) {

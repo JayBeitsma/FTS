@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\Ticket;
 use App\Models\Busride;
 use App\Models\User;
+use App\Models\ActiveRoute;
 
 
 class AdminController extends Controller
@@ -50,8 +51,11 @@ class AdminController extends Controller
         //get all users
         $users = User::all();
 
+        //get all active routes
+        $activeRoutes = ActiveRoute::all();
+
         //pass the data to the view
-        return view('admindashboard', compact('tickets', 'busrides', 'users'));
+        return view('admindashboard', compact('tickets', 'busrides', 'users', 'activeRoutes'));
     }
 
     public function create()
@@ -107,12 +111,20 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User deleted successfully.');
     }
 
-    public function destroyAdmin($id)
+    public function destroyActiveRoute($id)
     {
-        $admin = Admin::findOrFail($id);
-        $admin->delete();
+        $activeRoute = ActiveRoute::findOrFail($id);
 
-        return redirect()->back()->with('success', 'Admin deleted successfully.');
+        //destroy all tickets related to this active route
+        $tickets = Ticket::where('busride_id', $activeRoute->busride_id)->get();
+        foreach ($tickets as $ticket) {
+            $ticket->delete();
+        }
+
+        //destroy the active route
+        $activeRoute->delete();
+
+        return redirect()->back()->with('success', 'Active route deleted successfully.');
     }
 
     public function createBusride(Request $request)

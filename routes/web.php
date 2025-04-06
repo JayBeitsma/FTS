@@ -67,6 +67,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::patch('dashboard/busrides/{id}', [AdminController::class, 'updateBusride'])->name('dashboard.busrides.update')->middleware('auth:admin');
     // Admin user routes
     Route::delete('dashboard/users/{id}', [AdminController::class, 'destroyUser'])->name('dashboard.user.destroy')->middleware('auth:admin');
+    // Admin active routes routes
+    Route::delete('dashboard/activeroutes/{id}', [AdminController::class, 'destroyActiveRoute'])->name('dashboard.activeroutes.destroy')->middleware('auth:admin');
+
 });
 
 // Admin Dashboard
