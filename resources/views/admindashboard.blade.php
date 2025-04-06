@@ -16,7 +16,7 @@
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <h2 class="text-2xl font-bold mb-4 p-4  text-white">Busritten</h2>
-                <button onclick="toggleSection('Busrides-section')" class="text-blue-500 ml-4 mb-4">Show</button>
+                <button onclick="toggleSection('busrides-section')" class="text-blue-500 ml-4 mb-4">Show</button>
                 <section id="busrides-section" class="p-6 pt-1 text-gray-900 dark:text-gray-100">
                     <x-admin-busrides-view :busrides="$busrides" />
                 </section>

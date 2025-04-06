@@ -45,17 +45,16 @@ class AdminController extends Controller
         $tickets = Ticket::all();
 
         //get all busrides
-//        $busrides = Busride::all();
         $busrides = Busride::withCount('tickets')->get();
+
+        // Log the retrieved busrides
+        \Log::info('Busrides retrieved:', $busrides->toArray());
 
         //get all users
         $users = User::all();
 
-        //get all admins
-        $admins = Admin::all();
-
         //pass the data to the view
-        return view('admindashboard', compact('tickets', 'busrides', 'users', 'admins'));
+        return view('admindashboard', compact('tickets', 'busrides', 'users'));
     }
 
     public function create()

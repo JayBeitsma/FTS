@@ -66,6 +66,9 @@
                 <div class="flex justify-between items-center bg-white dark:bg-gray-800 p-4 rounded-lg">
                     <div>
                         <h3 class="text-lg font-bold">{{ $Busride->name }}</h3>
+                        <p class="text-gray-500"><span class="font-bold text-white">Festival naam: </span>{{ $Busride->festival_name }}</p>
+                        <p class="text-gray-500"><span class="font-bold text-white">Startpunt: </span>{{ $Busride->starting_point }}</p>
+                        <p class="text-gray-500"><span class="font-bold text-white">Eindpunt: </span>{{ $Busride->end_point }}</p>
                         <p class="text-gray-500"><span class="font-bold text-white">Vertrek: </span>{{ $Busride->departure_time }}</p>
                         <p class="text-gray-500"><span class="font-bold text-white">Aankomts: </span>{{ $Busride->arrival_time }}</p>
                         <p class="text-gray-500"><span class="font-bold text-white">Bus ID: </span>{{ $Busride->id }}</p>

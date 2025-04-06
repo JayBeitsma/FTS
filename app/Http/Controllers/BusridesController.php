@@ -12,9 +12,26 @@ class BusridesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $busrides = Busride::all(); // Fetch all
+        $query = Busride::query();
+
+        if ($request->has('start') && $request->input('start') !== null) {
+            $query->where('starting_point', $request->input('start'));
+        } elseif ($request->has('end') && $request->input('end') !== null) {
+            $query->where('end_point', $request->input('end'));
+        }
+
+        if ($request->has('date') && $request->input('date') !== null) {
+            $query->whereDate('departure_date', $request->input('date'));
+        }
+
+        if ($request->has('time') && $request->input('time') !== null) {
+            $query->whereTime('departure_time', $request->input('time'));
+        }
+
+        $busrides = $query->get();
+
         return view('pages.busrides', compact('busrides'));
     }
 
