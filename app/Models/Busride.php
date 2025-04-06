@@ -20,7 +20,9 @@ class Busride extends Model
         'price',
         'starting_point',
         'end_point',
+        'departure_date',
         'departure_time',
+        'arrival_date',
         'arrival_time',
         'tickets_available',
     ];

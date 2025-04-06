@@ -20,8 +20,10 @@ return new class extends Migration
             $table->float('price');
             $table->string('starting_point');
             $table->string('end_point');
-            $table->dateTime('departure_time');
-            $table->dateTime('arrival_time');
+            $table->date('departure_date');
+            $table->time('departure_time');
+            $table->date('arrival_date');
+            $table->time('arrival_time');
             $table->integer('tickets_available')->nullable();
         });
     }

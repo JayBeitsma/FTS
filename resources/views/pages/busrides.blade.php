@@ -12,7 +12,7 @@
                             <img src="{{ asset('images/'. $busride->ftimg) }}" alt="Festival" class="w-16 h-16 rounded-md">
                             <div class="mb-4 border-gray-200 pt-4">
                                 <p class="text-lg font-bold">{{ $busride->starting_point }} -> {{ $busride->end_point }}</p>
-                                <p>{{ $busride->departure_time }} -> {{ $busride->arrival_time }} </p>
+                                <p>{{ $busride->departure_date }} {{ $busride->departure_time }} -> {{ $busride->arrival_date }} {{ $busride->arrival_time }} </p>
                             </div>
                             <span class="bg-blue-500 text-white px-4 py-2 rounded-md">Details</span>
                         </summary>

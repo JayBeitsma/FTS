@@ -47,9 +47,6 @@ class AdminController extends Controller
         //get all busrides
         $busrides = Busride::withCount('tickets')->get();
 
-        // Log the retrieved busrides
-        \Log::info('Busrides retrieved:', $busrides->toArray());
-
         //get all users
         $users = User::all();
 
@@ -128,7 +125,9 @@ class AdminController extends Controller
         $busride->price = $request->input('price');
         $busride->starting_point = $request->input('starting_point');
         $busride->end_point = $request->input('end_point');
+        $busride->departure_date = $request->input('departure_date');
         $busride->departure_time = $request->input('departure_time');
+        $busride->arrival_date = $request->input('arrival_date');
         $busride->arrival_time = $request->input('arrival_time');
         $busride->tickets_available = $request->input('tickets_available');
 
@@ -157,7 +156,9 @@ class AdminController extends Controller
         $busride->price = $request->input('price');
         $busride->starting_point = $request->input('starting_point');
         $busride->end_point = $request->input('end_point');
+        $busride->departure_date = $request->input('departure_date');
         $busride->departure_time = $request->input('departure_time');
+        $busride->arrival_date = $request->input('arrival_date');
         $busride->arrival_time = $request->input('arrival_time');
         $busride->tickets_available = $request->input('tickets_available');
 

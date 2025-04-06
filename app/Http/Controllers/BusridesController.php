@@ -30,6 +30,7 @@ class BusridesController extends Controller
             $query->whereTime('departure_time', $request->input('time'));
         }
 
+
         $busrides = $query->get();
 
         return view('pages.busrides', compact('busrides'));

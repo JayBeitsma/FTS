@@ -21,10 +21,10 @@
         <div class="flex w-full justify-between mt-6">
             <div class="flex w-1/2">
                 <div>
-                    <input type="date" class="border border-blue-500 rounded-md px-4 py-3 text-md bg-transparent text-white">
+                    <input type="date" name="date" class="border border-blue-500 rounded-md px-4 py-3 text-md bg-transparent text-white">
                 </div>
                 <div>
-                    <input type="time" class="border border-blue-500 rounded-md px-4 py-3 text-md bg-transparent text-white">
+                    <input type="time" name="time" class="border border-blue-500 rounded-md px-4 py-3 text-md bg-transparent text-white">
                 </div>
             </div>
             <div class="flex">
