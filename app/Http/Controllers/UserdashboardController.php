@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActiveRoute;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,13 +72,24 @@ class UserdashboardController extends Controller
         // Get the authenticated user
         $user = Auth::user();
 
-        // Find the ticket by ID and ensure it belongs to the authenticated user
+        // Get ticket
         $ticket = Ticket::where('id', $id)->where('user_id', $user->id)->firstOrFail();
+
+        // Get the busride id
+        $busrideId = $ticket->busride_id;
 
         // Delete the ticket
         $ticket->delete();
 
-        // Redirect back to the dashboard with a success message
-        return redirect()->route('dashboard')->with('status', 'Ticket canceled successfully.');
+        // Get active route
+        $activeRoute = ActiveRoute::where('busride_id', $busrideId)->latest()->first();
+
+        // If active route decrease by 1
+        if ($activeRoute) {
+            $activeRoute->decrement('number_of_passangers');
+        }
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Ticket cancelled successfully!');
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Busride;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ticket;
+use App\Models\ActiveRoute;
 
 class BusridesController extends Controller
 {
@@ -69,12 +70,52 @@ class BusridesController extends Controller
     {
         $busride = Busride::findOrFail($id);
 
-        // Example: Save ticket
+        // Save ticket
         $ticket = Ticket::create([
             'user_id' => auth()->id(),
             'busride_id' => $busride->id,
             'price' => $busride->price,
         ]);
+
+        // Get ticket count
+        $ticketCount = Ticket::where('busride_id', $busride->id)->count();
+
+        if ($ticketCount == 30) {
+            ActiveRoute::create([
+                'name' => $busride->name,
+                'busride_id' => $busride->id,
+                'starting_point' => $busride->starting_point,
+                'end_point' => $busride->end_point,
+                'number_of_passangers' => 29,
+                'number_of_seats' => 60,
+                'departure_date' => $busride->departure_date,
+                'departure_time' => $busride->departure_time,
+                'arrival_date' => $busride->arrival_date,
+                'arrival_time' => $busride->arrival_time,
+            ]);
+        }
+
+        // Check if other active routes exist
+        $activeRoute = ActiveRoute::where('busride_id', $busride->id)->latest()->first();
+
+        if ($activeRoute) {
+            $activeRoute->increment('number_of_passangers');
+
+            if ($activeRoute->number_of_passangers == $activeRoute->number_of_seats) {
+                ActiveRoute::create([
+                    'name' => $busride->name,
+                    'busride_id' => $busride->id,
+                    'starting_point' => $busride->starting_point,
+                    'end_point' => $busride->end_point,
+                    'number_of_passangers' => 1,
+                    'number_of_seats' => 60,
+                    'departure_date' => $busride->departure_date,
+                    'departure_time' => $busride->departure_time,
+                    'arrival_date' => $busride->arrival_date,
+                    'arrival_time' => $busride->arrival_time,
+                ]);
+            }
+        }
 
         return redirect()->route('busrides.index', $id)
             ->with('success', 'Ticket purchased successfully!');

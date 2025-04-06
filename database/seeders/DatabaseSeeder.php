@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Busride;
 use App\Models\Admin;
+use App\Models\Ticket;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\BusrideFactory;
 use Illuminate\Database\Seeder;
@@ -182,5 +183,14 @@ class DatabaseSeeder extends Seeder
             Busride::create($busride);
         }
 
+        $busride = Busride::first(); // Select the specific busride you want to use
+
+
+        for ($i = 0 ; $i < 29; $i++) {
+            Ticket::factory()->create([
+                'user_id' => rand(1,4),
+                'busride_id' => $busride->id,
+            ]);
+        }
     }
 }
