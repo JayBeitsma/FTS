@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
                 'departure_time' => '08:00:00',
                 'arrival_date' => '2024-06-01',
                 'arrival_time' => '16:00:00',
-                'tickets_available' => 50
+                'tickets_available' => 35
             ],
             [
                 'name' => 'Paris to Brussels',

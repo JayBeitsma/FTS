@@ -23,7 +23,11 @@
                                 @csrf
                                 <input type="hidden" name="price" value="{{ $busride->price }}">
                                 @auth
-                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Koop een kaartje</button>
+                                    @if ($busride->ticket_count >= $busride->tickets_available)
+                                        <button type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md" disabled>Geen kaarten beschikbaar</button>
+                                    @else
+                                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Koop een kaartje</button>
+                                    @endif
                                 @else
                                     <a href="{{ route('login') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Inloggen</a>
                                 @endauth

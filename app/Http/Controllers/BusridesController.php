@@ -36,6 +36,10 @@ class BusridesController extends Controller
 
         $busrides = $query->get();
 
+        foreach ($busrides as $busride) {
+            $busride->ticket_count = Ticket::where('busride_id', $busride->id)->count();
+        }
+
         return view('pages.busrides', compact('busrides'));
     }
 
@@ -71,6 +75,14 @@ class BusridesController extends Controller
     public function buyTicket(Request $request, $id)
     {
         $busride = Busride::findOrFail($id);
+
+        // Check ticket availability
+        $ticketCount = Ticket::where('busride_id', $busride->id)->count();
+
+        // if ticket count is more or equal to tickets available
+        if ($ticketCount >= $busride->tickets_available) {
+            return redirect()->back()->with('error', 'No tickets available for this busride.');
+        }
 
         // Save ticket
         $ticket = Ticket::create([
