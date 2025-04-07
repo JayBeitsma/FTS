@@ -23,9 +23,9 @@
                                 @csrf
                                 <input type="hidden" name="price" value="{{ $busride->price }}">
                                 @auth
-                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Buy Tickets</button>
+                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Koop een kaartje</button>
                                 @else
-                                    <a href="{{ route('login') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Login to buy</a>
+                                    <a href="{{ route('login') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Inloggen</a>
                                 @endauth
                             </form>
                         </div>

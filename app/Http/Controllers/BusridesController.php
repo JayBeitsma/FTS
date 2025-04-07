@@ -19,7 +19,9 @@ class BusridesController extends Controller
 
         if ($request->has('start') && $request->input('start') !== null) {
             $query->where('starting_point', $request->input('start'));
-        } elseif ($request->has('end') && $request->input('end') !== null) {
+        }
+
+        if ($request->has('end') && $request->input('end') !== null) {
             $query->where('end_point', $request->input('end'));
         }
 

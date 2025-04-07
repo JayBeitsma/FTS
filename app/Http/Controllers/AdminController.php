@@ -187,9 +187,9 @@ class AdminController extends Controller
         $busride->tickets_available = $request->input('tickets_available');
 
         if ($busride->save()) {
-            return redirect()->back()->with('success', 'Busride updated successfully.');
+            return redirect()->route('admin.dashboard')->with('success', 'Busride updated successfully.');
         } else {
-            return redirect()->back()->with('error', 'Failed to update busride.');
+            return redirect()->route('admin.dashboard')->with('error', 'Failed to update busride.');
         }
     }
 }

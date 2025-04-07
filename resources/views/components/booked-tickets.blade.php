@@ -5,8 +5,8 @@
             <div class="flex justify-between items-center bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
                 <div>
                     <h3 class="text-lg font-bold">{{ $ticket->busride->name }}</h3>
-                    <p class="text-gray-500"><span class="font-bold text-white">Vertrek: </span>{{ $ticket->busride->departure_time }}</p>
-                    <p class="text-gray-500"><span class="font-bold text-white">Aankomts: </span>{{ $ticket->busride->arrival_time }}</p>
+                    <p class="text-gray-500"><span class="font-bold text-white">Vertrek: </span>{{ $ticket->busride->departure_date }} {{ $ticket->busride->departure_time }}</p>
+                    <p class="text-gray-500"><span class="font-bold text-white">Aankomts: </span>{{ $ticket->busride->arrival_date }} {{ $ticket->busride->arrival_time }}</p>
                 </div>
                 <div>
                     <p class="text-gray-500">Prijs: €{{ $ticket->price }}</p>
